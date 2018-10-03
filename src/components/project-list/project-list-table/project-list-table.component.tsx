@@ -1,5 +1,8 @@
 import * as React from "react";
-import {getProjectList, updateViewRow} from "../../../actions/info/info.actions";
+import {
+  getProjectList,
+  updateViewRow
+} from "../../../actions/info/info.actions";
 import { connect } from "react-redux";
 import { IState } from "../../../reducers";
 import { Table } from "reactstrap";
@@ -22,47 +25,45 @@ export class ProjectListTableComponent extends React.Component<IProps, any> {
     this.chooseRow = this.chooseRow.bind(this);
   }
 
-  public chooseRow(e: any){
-      this.props.updateViewRow(e.currentTarget.dataset.id);
+  public chooseRow(e: any) {
+    this.props.updateViewRow(e.currentTarget.dataset.id);
   }
-  public componentDidMount(){
-      this.props.getProjectList();
+  public componentDidMount() {
+    this.props.getProjectList();
   }
 
   public render() {
-    // const list = this.props.projectList || [];
     const listEntries: any[] = [];
     for (const l of this.props.projectList) {
-      if(+this.props.viewRow === +l.id){
-          listEntries.push(
-              <tr data-id={l.id} key={l.id} onClick={this.chooseRow}>
-                  <td>{l.project_name}</td>
-                  <td>{l.id}</td>
-                  <td>{l.start_date}</td>
-                  <td>{l.end_date}</td>
-                  <td>{l.project_details}</td>
-              </tr>
-          );
-          listEntries.push(
-              <tr data-id={l.id} key={0} onClick={this.chooseRow}>
-                  <td>HELLO</td>
-                  <td>HELLO</td>
-                  <td>HELLO</td>
-                  <td>HELLO</td>
-                  <td>HELLO</td>
-              </tr>
-          );
-      }
-      else {
-          listEntries.push(
-              <tr data-id={l.id} key={l.id} onClick={this.chooseRow}>
-                  <td>{l.project_name}</td>
-                  <td>{l.id}</td>
-                  <td>{l.start_date}</td>
-                  <td>{l.end_date}</td>
-                  <td>{l.project_details}</td>
-              </tr>
-          );
+      if (+this.props.viewRow === +l.id) {
+        listEntries.push(
+          <tr data-id={l.id} key={l.id} onClick={this.chooseRow}>
+            <td>{l.project_name}</td>
+            <td>{l.id}</td>
+            <td>{l.start_date}</td>
+            <td>{l.end_date}</td>
+            <td>{l.project_details}</td>
+          </tr>
+        );
+        listEntries.push(
+          <tr data-id={l.id} key={0} onClick={this.chooseRow}>
+            <td>HELLO</td>
+            <td>HELLO</td>
+            <td>HELLO</td>
+            <td>HELLO</td>
+            <td>HELLO</td>
+          </tr>
+        );
+      } else {
+        listEntries.push(
+          <tr data-id={l.id} key={l.id} onClick={this.chooseRow}>
+            <td>{l.project_name}</td>
+            <td>{l.id}</td>
+            <td>{l.start_date}</td>
+            <td>{l.end_date}</td>
+            <td>{l.project_details}</td>
+          </tr>
+        );
       }
     }
     return (
@@ -86,14 +87,14 @@ export class ProjectListTableComponent extends React.Component<IProps, any> {
 }
 const mapStateToProps = (state: IState) => {
   return {
-      projectList: state.info.projectList,
-      viewRow: state.info.viewRow
+    projectList: state.info.projectList,
+    viewRow: state.info.viewRow
   };
 };
 
 const mapDispatchToProps = {
-    getProjectList,
-    updateViewRow,
+  getProjectList,
+  updateViewRow
 };
 
 export default connect(
