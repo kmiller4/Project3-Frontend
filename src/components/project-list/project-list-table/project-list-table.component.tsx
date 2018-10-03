@@ -34,7 +34,10 @@ export class ProjectListTableComponent extends React.Component<IProps, any> {
     }
     return (
       <div>
-        <ProjectListExport />
+        <div className="table-header">
+          <p>Project List</p>
+          <ProjectListExport />
+        </div>
         <Table>
           <thead>
             <tr>
