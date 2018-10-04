@@ -6,7 +6,7 @@ import {
   updateTableType
 } from "../../../actions/info/info.actions";
 import { IState } from "../../../reducers";
-import ResourceListExport from "./resourceListExport";
+// import ResourceListExport from "./resource-list-export";
 
 interface IProps {
   resourceList: any[];
@@ -47,7 +47,7 @@ class TablesComponent extends React.Component<IProps, any> {
     }
     return (
       <div>
-        <ResourceListExport />
+        {/* <ResourceListExport /> */}
         <Table>
           <thead>
             <tr>

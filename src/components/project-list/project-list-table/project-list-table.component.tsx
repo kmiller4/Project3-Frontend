@@ -6,7 +6,7 @@ import {
 import { connect } from "react-redux";
 import { IState } from "../../../reducers";
 import { Table } from "reactstrap";
-import ProjectListExport from "./ProjectListExport";
+import ProjectListExport from "./project-list-export";
 
 interface IProps {
   viewRow: number;
