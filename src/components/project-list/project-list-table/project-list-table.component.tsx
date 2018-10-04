@@ -30,6 +30,7 @@ export class ProjectListTableComponent extends React.Component<IProps, any> {
   }
   public componentDidMount() {
     this.props.getProjectList();
+    console.log(this.props.projectList);
   }
 
   public render() {
