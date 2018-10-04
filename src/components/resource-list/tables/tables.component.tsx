@@ -6,7 +6,10 @@ import {
   updateTableType
 } from "../../../actions/info/info.actions";
 import { IState } from "../../../reducers";
+<<<<<<< HEAD
 // import ResourceListExport from "./resource-list-export";
+=======
+>>>>>>> fd844b99156e160da704690e80a9139ef5b725ad
 
 interface IProps {
   resourceList: any[];
@@ -24,6 +27,7 @@ class TablesComponent extends React.Component<IProps, any> {
     super(props);
   }
 
+<<<<<<< HEAD
   public componentDidMount() {
     this.props.getResourceList("UI");
   }
@@ -42,6 +46,38 @@ class TablesComponent extends React.Component<IProps, any> {
             <td>{r.project_name}</td>
             <td>{r.grade}</td>
           </tr>
+=======
+    public render() {
+        const resourceEntries: any[] = [];
+        if (this.props.resourceList[0] !== null) {
+            for (const r of this.props.resourceList) {
+                resourceEntries.push(
+                    <tr key={r.user_id}>
+                        <td>{r.first_name} {r.last_name}</td>
+                        <td>{r.user_id}</td>
+                        <td>{r.certifications.name}</td>
+                        <td>{r.project_name}</td>
+                        <td>{r.grade}</td>
+                    </tr>
+                )
+            }
+        }
+        return (
+            <Table>
+                <thead>
+                    <tr>
+                        <th>Associate Name</th>
+                        <th>ID</th>
+                        <th>Certification</th>
+                        <th>Project Details</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {resourceEntries}
+                </tbody>
+            </Table>
+>>>>>>> fd844b99156e160da704690e80a9139ef5b725ad
         );
       }
     }

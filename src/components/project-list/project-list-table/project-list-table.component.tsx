@@ -5,7 +5,7 @@ import {
 } from "../../../actions/info/info.actions";
 import { connect } from "react-redux";
 import { IState } from "../../../reducers";
-import { Table } from "reactstrap";
+import { Container, Table, Row } from "reactstrap";
 import ProjectListExport from "./project-list-export";
 
 interface IProps {
@@ -16,7 +16,9 @@ interface IProps {
 }
 
 /**
- * This component displays the project list table
+ * This component displays the project list table with an onClick method on each row.
+ * This method will display the associate list component that will grab associates related
+ * to the project that was clicked.
  */
 
 export class ProjectListTableComponent extends React.Component<IProps, any> {
@@ -30,7 +32,6 @@ export class ProjectListTableComponent extends React.Component<IProps, any> {
   }
   public componentDidMount() {
     this.props.getProjectList();
-    console.log(this.props.projectList);
   }
 
   public render() {
@@ -68,22 +69,25 @@ export class ProjectListTableComponent extends React.Component<IProps, any> {
       }
     }
     return (
-      <div>
-        <ProjectListExport />
-
-        <Table>
-          <thead>
-            <tr>
-              <th>Project Name</th>
-              <th>ID</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Project Details</th>
-            </tr>
-          </thead>
-          <tbody>{listEntries}</tbody>
-        </Table>
-      </div>
+      <Container fluid>
+        <Row>
+          <div className="col-md-7">
+            <ProjectListExport />
+            <Table hover>
+              <thead>
+                <tr>
+                  <th>PROJECT NAME</th>
+                  <th>ID</th>
+                  <th>START DATE</th>
+                  <th>END DATE</th>
+                  <th>CUSTOMER NAME</th>
+                </tr>
+              </thead>
+              <tbody>{listEntries}</tbody>
+            </Table>
+          </div>
+        </Row>
+      </Container>
     );
   }
 }
